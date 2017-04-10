@@ -228,7 +228,7 @@ static OneSignalLocation* singleInstance = nil;
 }
 
 + (void) sendLocation {
-    if (!lastLocation || ![OneSignal mUserId]) return;
+    if (!lastLocation || !@(lastLocation->cords.latitude) || !@(lastLocation->cords.longitude) || ![OneSignal mUserId]) return;
     
     //Fired from timer and not initial location fetched
     if(initialLocationSent)
