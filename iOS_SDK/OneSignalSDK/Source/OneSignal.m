@@ -1097,7 +1097,8 @@ static dispatch_queue_t serialQueue;
                 [self performSelector:@selector(sendTagsToServer) withObject:nil afterDelay:5];
             
             // try to send location
-            [OneSignalLocation sendLocation];
+            // Don't send the location until the EXC_BAD_ACCESS KERN_INVALID_ADDRESS issue is fixed (https://github.com/OneSignal/OneSignal-iOS-SDK/issues/222)
+            // [OneSignalLocation sendLocation];
             
             if (emailToSet) {
                 [OneSignal syncHashedEmail:emailToSet];
